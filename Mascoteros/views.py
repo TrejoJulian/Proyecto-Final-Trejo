@@ -3,6 +3,11 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from Mascoteros.models import *
+from Mascoteros.forms import *
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -21,23 +26,23 @@ class DetalleAnimal(DetailView):
     model = Animal
     template_name = "Mascoteros/animal/animal_detail.html"
 
-class CrearAnimal(CreateView):
 
-    model = Animal
-    success_url = "Mascoteros/animal/animal_list.html"
+class CrearAnimal(LoginRequiredMixin, CreateView):
+
+    form_class = AnimalFormulario
+    success_url = "/Mascoteros/animal/list"
     template_name = "Mascoteros/animal/animal_form.html"
-    fields = ["especie", "nombre", "descripcion", "imagen", "tamaño", "apto_niños"]
 
-class ActualizarAnimal(UpdateView):
+class ActualizarAnimal(LoginRequiredMixin, UpdateView):
     model = Animal
-    success_url = "Mascoteros/animal/animal_list.html"
+    form_class = AnimalFormulario
+    success_url = "/Mascoteros/animal/list"
     template_name = "Mascoteros/animal/animal_form.html"
-    fields = ["especie", "nombre", "descripcion", "imagen", "tamaño", "apto_niños"]
 
-class BorrarAnimal(DeleteView):
+class BorrarAnimal(LoginRequiredMixin, DeleteView):
 
     model = Animal
-    success_url = "Mascoteros/animal/animal_list.html"
+    success_url = "/Mascoteros/animal/list"
     template_name = "Mascoteros/animal/animal_confirm_delete.html"
 
 class ListaEstablecimiento(ListView):
@@ -50,24 +55,23 @@ class DetalleEstablecimiento(DetailView):
     model = Establecimiento
     template_name = "Mascoteros/establecimiento/establecimiento_detail.html"
 
-class CrearEstablecimiento(CreateView):
+class CrearEstablecimiento(LoginRequiredMixin, CreateView):
 
-    model = Establecimiento
-    success_url = "Mascoteros/establecimiento/establecimiento_list.html"
+    form_class = EstablecimientoFormulario
+    success_url = "/Mascoteros/establecimiento/list"
     template_name = "Mascoteros/establecimiento/establecimiento_form.html"
-    fields = ["nombre", "direccion", "horario", "imagen", "descripcion", "pagina_web"]
 
 
-class ActualizarEstablecimiento(UpdateView):
+class ActualizarEstablecimiento(LoginRequiredMixin, UpdateView):
     model = Establecimiento
-    success_url = "Mascoteros/establecimiento/establecimiento_list.html"
+    form_class = EstablecimientoFormulario
+    success_url = "/Mascoteros/establecimiento/list"
     template_name = "Mascoteros/establecimiento/establecimiento_form.html"
-    fields = ["nombre", "direccion", "horario", "imagen", "descripcion", "pagina_web"]
 
-class BorrarEstablecimiento(DeleteView):
+class BorrarEstablecimiento(LoginRequiredMixin, DeleteView):
 
     model = Establecimiento
-    success_url = "Mascoteros/establecimiento/establecimiento_list.html"
+    success_url = "/Mascoteros/establecimiento/list"
     template_name = "Mascoteros/establecimiento/establecimiento_confirm_delete.html"
 
 
@@ -81,23 +85,79 @@ class DetalleProducto(DetailView):
     model = Producto
     template_name = "Mascoteros/producto/producto_detail.html"
 
-class CrearProducto(CreateView):
+class CrearProducto(LoginRequiredMixin, CreateView):
 
-    model = Producto
-    success_url = "Mascoteros/producto/producto_list.html"
+    form_class = ProductoFormulario
+    success_url = "/Mascoteros/producto/list"
     template_name = "Mascoteros/producto/producto_form.html"
-    fields = ["nombre", "descripcion", "imagen", "especie_objetivo", "tipo"]
 
 
 
-class ActualizarProducto(UpdateView):
+class ActualizarProducto(LoginRequiredMixin, UpdateView):
     model = Producto
-    success_url = "Mascoteros/producto/producto_list.html"
+    form_class = ProductoFormulario
+    success_url = "/Mascoteros/producto/list"
     template_name = "Mascoteros/producto/producto_form.html"
-    fields = ["nombre", "descripcion", "imagen", "especie_objetivo", "tipo"]
 
-class BorrarProducto(DeleteView):
+class BorrarProducto(LoginRequiredMixin, DeleteView):
 
     model = Producto
-    success_url = "Mascoteros/producto/producto_list.html"
-    success_url = "Mascoteros/producto/producto_list.html"
+    success_url = "/Mascoteros/producto/list"
+
+
+
+#Vista para registrarse
+def register(request):
+
+    if request.method == 'POST':    #cuando le haga click al botón
+
+        form = RegistroFormulario(request.POST)   #leer los datos   llenados en el formulario
+
+        if form.is_valid():
+
+            user=form.cleaned_data['username']
+            form.save()
+            
+            return render(request, "Mascoteros/home.html", {'mensaje':"Usuario Creado"})
+    
+    else:
+
+        form = RegistroFormulario()   #formulario de django que nos permite crear usuarios.
+    
+    
+    return render(request, "Mascoteros/Autenticar/registro.html", {'form':form})
+
+
+
+#Vista para iniciar sesión
+def login_request(request):
+
+    if request.method == 'POST': #al presionar el botón "Iniciar Sesión"
+
+        form = AuthenticationForm(request, data = request.POST) #leer la data del formulario de inicio de sesión
+
+        if form.is_valid():
+            
+            usuario=form.cleaned_data.get('username')   #leer el usuario ingresado
+            contra=form.cleaned_data.get('password')    #leer la contraseña ingresada
+
+            user=authenticate(username=usuario, password=contra)    #buscar al usuario con los datos ingresados
+
+            if user:    #si ha encontrado un usuario con eso datos
+
+                login(request, user)   #hacemos login
+
+                #mostramos la página de inicio con un mensaje de bienvenida.
+                return render(request, "Mascoteros/home.html", {'mensaje':f"Bienvenido {user}"}) 
+
+        else:   #si el formulario no es valido (no encuentra usuario)
+
+            #mostramos la página de inicio junto a un mensaje de error.
+    
+            return render(request, "Mascoteros/home.html", {'mensaje':"Error. Datos incorrectos"})
+
+    else:
+            
+        form = AuthenticationForm() #mostrar el formulario
+
+    return render(request, "Mascoteros/Autenticar/login.html", {'form':form})    #vincular la vista con la plantilla de html

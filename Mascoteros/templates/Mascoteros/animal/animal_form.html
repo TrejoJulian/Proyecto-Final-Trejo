@@ -1,0 +1,11 @@
+
+
+
+<form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
+    <div class="d-flex justify-content-center">
+        <table> 
+            {{form.as_table}}
+        </table>
+    </div>
+    <input type="submit" value="Enviar">
+</form>

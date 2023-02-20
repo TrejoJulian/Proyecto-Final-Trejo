@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-
 from Mascoteros.views import *
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     
     path('home/', home, name="Home"),
+    path('register', register, name='Register'),
+    path('login', login_request, name="Login"),
+    path('logout', LogoutView.as_view(template_name='Mascoteros/Autenticar/logout.html'), name='Logout'),
 
     #CRUD ANIMALES
     path("animal/list/", ListaAnimal.as_view(), name="AnimalesLista"),

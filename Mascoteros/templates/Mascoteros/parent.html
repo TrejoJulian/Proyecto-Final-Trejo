@@ -22,8 +22,19 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AnimalesLista' %}">Animales</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'EstablecimientosLista' %}">Establecimientos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'ProductosLista' %}">Productos</a></li>
+                        {% if not user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"  href="{% url 'Register' %}">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Login' %}">Iniciar Sesión</a></li>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'Logout' %}">Cerrar sesión</a></li>
+                        {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

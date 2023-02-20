@@ -1,0 +1,13 @@
+<ul>
+    {% for establecimiento in object_list %}
+    <li>
+        {{ establecimiento.nombre }}
+        <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}" > Ver </a>
+        <a href="{% url 'EstablecimientosEditar' establecimiento.id %}" > Editar </a>
+        <a href="{% url 'EstablecimientosBorrar' establecimiento.id %}" > Borrar </a>
+    </li>
+    {% endfor %}
+    
+</ul>
+
+<a href="{% url 'EstablecimientosCrear' %}" > Crear </a>
