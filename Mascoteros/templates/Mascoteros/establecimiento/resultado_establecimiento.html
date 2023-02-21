@@ -2,8 +2,10 @@
 {% load static %}
 {% block contenidoDinamico %}
 <h1 class="card-title">Resultados de búsqueda por Nombre: {{ nombre }}</h1>
-<br>
-<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+<div class="row gx-2 gx-lg-2 align-items-center my-2"></div>
+
+{% if establecimientos %}
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
     {% for establecimiento in establecimientos %}
     <div class="col mb-5">
         <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}">
@@ -22,5 +24,14 @@
         </a>
     </div>  
     {% endfor %}    
-</div>    
+</div>
+
+{% else %}
+
+<h3 class="card-title">No se han encontrado resultados</h3>
+<div class="justify-content-center">
+    <img src="{% static 'Mascoteros/images/sin_resultados_busqueda.svg' %}" class="centered-image rounded mx-auto d-block" alt="...">
+</div>
+{% endif %}
+
 {% endblock %}

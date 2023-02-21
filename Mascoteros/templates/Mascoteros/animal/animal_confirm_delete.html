@@ -3,6 +3,8 @@
 {% block contenidoDinamico %}
 
 <h1 class="card-title">Confirmación de borrado</h1>
+<div class="row gx-2 gx-lg-2 align-items-center my-2"></div>
+
 <form method="POST" >{% csrf_token %}
     <h5>¿Estás seguro que deseas borrar el animal {{ object.nombre }} ?</h5>
     <a href="{% url 'AnimalesDetalle' animal.id %}" class="btn btn btn-light" role="button" aria-pressed="true">No</a>

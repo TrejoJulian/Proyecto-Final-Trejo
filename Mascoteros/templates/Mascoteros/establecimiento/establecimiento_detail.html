@@ -2,6 +2,31 @@
 {% load static %}
 {% block contenidoDinamico %}
 
-<h1 class="card-title">Información sobre {{establecimiento.nombre}}</h1>
-<p>{{establecimiento.nombre}}</p>
+<h1 class="card-title">Detalle de Establecimiento</h1>
+<div class="row gx-2 gx-lg-2 align-items-center my-2"></div>
+
+<div class="row gx-4 gx-lg-5 align-items-left">
+    <div class="col-md-6"><img class="card-img-top-detail mb-5 mb-md-0" src="{{establecimiento.imagen.url}}" alt="..." /></div>
+    <div class="col-md-6">
+        <h1 class="display-6 fw-bolder">{{establecimiento.nombre}}</h1>
+        <div class="fs-5 mb-3">
+            <span class="span-detalle-label">Dirección:</span>
+            <span class="span-detalle">{{establecimiento.direccion}}</span>
+            </br>
+            <span class="span-detalle-label">Horario:</span>
+            <span class="span-detalle">{{establecimiento.horario}}</span>
+            </br>
+            <span class="span-detalle-label">Página Web:</span>
+            <span class="span-detalle">{{establecimiento.pagina_web}}</span>
+        </div>
+        <p class="lead">{{establecimiento.descripcion}}</p>
+    </div>
+    <div class="container-fluid">
+        <a href="{% url 'EstablecimientosEditar' establecimiento.id %}" class="btn btn-dark active" role="button" aria-pressed="true">Editar</a>
+        <a href="{% url 'EstablecimientosBorrar' establecimiento.id %}" class="btn btn-outline-success" role="button" aria-pressed="true">Eliminar</a>
+    </div>
+    
+</div>
+
+
 {% endblock %}

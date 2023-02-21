@@ -4502,7 +4502,7 @@ textarea.form-control-lg {
 .navbar-dark .navbar-nav .show > .nav-link,
 .navbar-dark .navbar-nav .nav-link.active-2 {
   color: #fff;
-  background-color: #9b80ca;
+  background-color: #9846cc;
   margin-left:2px;
   margin-right:2px
 
@@ -7837,7 +7837,7 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #7E57C2;
 }
 
 .bg-secondary {
@@ -11315,4 +11315,19 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.span-detalle {
+  font-size:medium;
+}
+
+.span-detalle-label {
+  font-size:medium;
+  font-weight: bold;
+  color: #7E57C2;
+}
+
+.centered-image {
+  width:30%;
+  height: 30%;
 }
