@@ -3,7 +3,11 @@
 {% block contenidoDinamico %}
 <h1 class="card-title">Registro de Usuario</h1>
 <form action="" method="POST">{% csrf_token %}
-    {{form.as_p}}
+    <div class="d-flex">
+        <table> 
+            {{form.as_table}}
+        </table>
+    </div>
     <a href="{% url 'Home' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
     <button type="submit" class="btn btn-dark">Registrarse</button>
 </form>

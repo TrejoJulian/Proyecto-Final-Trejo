@@ -36,8 +36,9 @@ class AnimalFormulario(forms.ModelForm):
         fields = ("especie", "nombre", "descripcion", "imagen", "tamaño", "apto_niños")
 
         widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'especie': forms.Select(choices=opciones_especie),
-            'descripcion': forms.Textarea,
+            'descripcion': forms.Textarea(attrs={'class': 'form-control'}),
             'tamaño':  forms.Select(choices=opciones_tamaño),
             'apto_niños': forms.Select(choices=opciones_apto_niños)
         }

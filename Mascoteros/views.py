@@ -105,6 +105,27 @@ class BorrarProducto(LoginRequiredMixin, DeleteView):
     success_url = "/Mascoteros/producto/list"
 
 
+def resultado_animales(request):
+
+    animal_buscado = request.GET["nombre"]
+    resultados_animales = Animal.objects.filter(nombre__icontains=animal_buscado)
+
+    return render(request, "Mascoteros/animal/resultado_animal.html", {"nombre":animal_buscado, "animales": resultados_animales})
+
+
+def resultado_establecimientos(request):
+
+    establecimiento_buscado = request.GET["nombre"]
+    resultados_establecimientos = Establecimiento.objects.filter(nombre__icontains=establecimiento_buscado)
+
+    return render(request, "Mascoteros/establecimiento/resultado_establecimiento.html", {"nombre":establecimiento_buscado, "establecimientos": resultados_establecimientos})
+
+def resultado_productos(request):
+
+    producto_buscado = request.GET["nombre"]
+    resultados_productos = Producto.objects.filter(nombre__icontains=producto_buscado)
+
+    return render(request, "Mascoteros/producto/resultado_producto.html", {"nombre":producto_buscado, "productos": resultados_productos})
 
 #Vista para registrarse
 def register(request):

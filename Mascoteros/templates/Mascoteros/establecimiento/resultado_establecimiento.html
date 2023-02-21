@@ -1,0 +1,26 @@
+{% extends "Mascoteros/parent.html" %}
+{% load static %}
+{% block contenidoDinamico %}
+<h1 class="card-title">Resultados de búsqueda por Nombre: {{ nombre }}</h1>
+<br>
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    {% for establecimiento in establecimientos %}
+    <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}">
+        <div class="col mb-5">
+            <div class="card h-100">
+                <!-- Product image-->
+                <img class="card-img-top-list" src="{{establecimiento.imagen.url}}" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{establecimiento.nombre}}</h5>
+                    </div>
+                </div>
+                <!-- Product actions-->
+            </div>
+        </div> 
+    </a>   
+    {% endfor %}    
+</div>    
+{% endblock %}

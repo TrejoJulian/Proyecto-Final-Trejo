@@ -17,6 +17,8 @@ urlpatterns = [
     path("animal/editar/<int:pk>", ActualizarAnimal.as_view(), name="AnimalesEditar"),
     path("animal/borrar/<int:pk>", BorrarAnimal.as_view(), name="AnimalesBorrar"),
 
+    path("resultadoAnimales/", resultado_animales, name="Resultado_Animales"),
+
     #CRUD Establecimientos
     path("establecimiento/list/", ListaEstablecimiento.as_view(), name="EstablecimientosLista"),
     path("establecimiento/<int:pk>", DetalleEstablecimiento.as_view(), name="EstablecimientosDetalle"),
@@ -24,10 +26,14 @@ urlpatterns = [
     path("establecimiento/editar/<int:pk>", ActualizarEstablecimiento.as_view(), name="EstablecimientosEditar"),
     path("establecimiento/borrar/<int:pk>", BorrarEstablecimiento.as_view(), name="EstablecimientosBorrar"),
 
+    path("resultadoEstablecimientos/", resultado_establecimientos, name="Resultado_Establecimientos"),
+
     #CRUD PRODUCTOS
     path("producto/list/", ListaProducto.as_view(), name="ProductosLista"),
     path("producto/<int:pk>", DetalleProducto.as_view(), name="ProductosDetalle"),
     path("producto/crear/", CrearProducto.as_view(), name="ProductosCrear"),
     path("producto/editar/<int:pk>", ActualizarProducto.as_view(), name="ProductosEditar"),
     path("producto/borrar/<int:pk>", BorrarProducto.as_view(), name="ProductosBorrar"),
+
+    path("resultadoProductos/", resultado_productos, name="Resultado_Productos"),
 ]

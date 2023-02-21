@@ -2,7 +2,7 @@
 {% load static %}
 {% block contenidoDinamico %}
 
-<h1 class="card-title">Nuevo Establecimiento</h1>
+<h1 class="card-title">Describe a tu Establecimiento</h1>
 <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
     <div class="d-flex justify-content-center">
         <table> 
@@ -10,7 +10,7 @@
         </table>
     </div>
     <a href="{% url 'EstablecimientosLista' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
-    <button type="submit" class="btn btn-dark">Crear Entrada</button>
+    <button type="submit" class="btn btn-dark">Guardar</button>
 </form>
 
 {% endblock %}

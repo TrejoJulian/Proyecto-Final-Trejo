@@ -4,7 +4,10 @@
 
 <h1 class="card-title">Portal de Animales </h1>
 <a href="{% url 'AnimalesCrear' %}" class="btn btn-dark active float-right" role="button" aria-pressed="true">Nueva Entrada</a>
-<a href="#" class="btn btn-dark active float-right" role="button" aria-pressed="true">Buscar Animal</a>
+<form action="/Mascoteros/resultadoAnimales/" method="GET">
+    <input type="text" name="nombre">
+    <input class="btn btn-dark active float-right" type="submit" value="Buscar">
+</form>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for animal in object_list %}
             <a href="{% url 'AnimalesDetalle' animal.id %}">

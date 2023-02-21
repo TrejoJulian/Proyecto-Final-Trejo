@@ -3,15 +3,15 @@
 {% load static %}
 {% block contenidoDinamico %}
 
-<h1 class="card-title">Nuevo Producto</h1>
+<h1 class="card-title">Describe a tu Producto</h1>
 <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
-    <div class="d-flex justify-content-center">
+    <div class="d-flex">
         <table> 
             {{form.as_table}}
         </table>
     </div>
     <a href="{% url 'ProductosLista' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
-    <button type="submit" class="btn btn-dark">Crear Entrada</button>
+    <button type="submit" class="btn btn-dark">Guardar</button>
 </form>
 
 {% endblock %}
