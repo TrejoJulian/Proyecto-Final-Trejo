@@ -3317,13 +3317,13 @@ textarea.form-control-lg {
 }
 
 .btn-outline-success {
-  color: #198754;
-  border-color: #198754;
+  color: #7E57C2 !important;
+  border-color: #7E57C2 !important;
 }
 .btn-outline-success:hover {
-  color: #fff;
-  background-color: #198754;
-  border-color: #198754;
+  color: #fff !important;
+  background-color: #7E57C2 !important;
+  border-color: #7E57C2 !important;
 }
 .btn-check:focus + .btn-outline-success, .btn-outline-success:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
@@ -3337,7 +3337,7 @@ textarea.form-control-lg {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
 }
 .btn-outline-success:disabled, .btn-outline-success.disabled {
-  color: #198754;
+  color: #198754 !important;
   background-color: transparent;
 }
 
@@ -4493,6 +4493,16 @@ textarea.form-control-lg {
   margin-right:2px
 
 }
+
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active-2 {
+  color: #fff;
+  background-color: #9b80ca;
+  margin-left:2px;
+  margin-right:2px
+
+}
+
 .navbar-dark .navbar-toggler {
   color: rgba(255, 255, 255, 0.55);
   border-color: rgba(255, 255, 255, 0.1);
@@ -4619,6 +4629,11 @@ textarea.form-control-lg {
   object-fit: cover;
 }
 
+.card-img-top-detail{
+  width: 100%;
+  height: 25vw;
+  object-fit:fill ;
+}
 
 .card-img,
 .card-img-top {

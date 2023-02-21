@@ -6,7 +6,7 @@
 <h1 class="card-title">Confirmación de borrado</h1>
 <form method="POST" >{% csrf_token %}
     <h5>¿Estás seguro que deseas borrar el establecimiento {{ object.nombre }} ?</h5>
-    <a href="{% url 'EstablecimientosLista' %}" class="btn btn btn-light" role="button" aria-pressed="true">No</a>
+    <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}" class="btn btn btn-light" role="button" aria-pressed="true">No</a>
     <button type="submit" class="btn btn-dark">Si</button>
 </form>
 

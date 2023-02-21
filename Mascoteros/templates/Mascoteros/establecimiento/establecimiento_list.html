@@ -8,26 +8,25 @@
     <input type="text" name="nombre">
     <input class="btn btn-dark active float-right" type="submit" value="Buscar">
 </form>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for establecimiento in object_list %}
-            <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}">
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Product image-->
-                        <img class="card-img-top-list" src="{{establecimiento.imagen.url}}" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">{{establecimiento.nombre}}</h5>
-                            </div>
-                        </div>
-                        <!-- Product actions-->
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
+    {% for establecimiento in object_list %}
+    <div class="col mb-5">
+        <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}">
+            <div class="card h-100">
+                <!-- Item image-->
+                <img class="card-img-top-list" src="{{establecimiento.imagen.url}}" alt="..." />
+                <!-- Item details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Item name-->
+                        <h5 class="fw-bolder">{{establecimiento.nombre}}</h5>
                     </div>
-                </div> 
-            </a>   
-            {% endfor %}    
-        </div>    
+                </div>
+            </div>
+        </a>
+    </div> 
+    {% endfor %}    
+</div>    
         <ul>
             {% for establecimiento in object_list %}
             <li>
@@ -41,7 +40,3 @@
         </ul>
 
 {% endblock %}
-
-
-
-<a href="{% url 'EstablecimientosCrear' %}" > Crear </a>

@@ -2,6 +2,29 @@
 {% load static %}
 {% block contenidoDinamico %}
 
-<h1 class="card-title">Información sobre {{animal.nombre}}</h1>
-<p>{{animal.nombre}}</p>
+<h1 class="card-title">Detalle de Animal</h1>
+
+        <div class="row gx-4 gx-lg-5 align-items-left">
+            <div class="col-md-6"><img class="card-img-top-detail mb-5 mb-md-0" src="{{animal.imagen.url}}" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">{{animal.especie}}</div>
+                <h1 class="display-5 fw-bolder">{{animal.nombre}}</h1>
+                <div class="fs-5 mb-3">
+                    <span class="text-decoration-bold">Tamaño:</span>
+                    <span>{{animal.tamaño}}</span>
+                    {% if animal.apto_niños %}
+                    <span class="text-decoration-bold">; Apto para niños</span>
+                    {% else %}
+                    <span class="text-decoration-bold">; No Apto para niños</span>
+                    {% endif %}
+                </div>
+                <p class="lead">{{animal.descripcion}}</p>
+            </div>
+            <div class="container-fluid">
+                <a href="{% url 'AnimalesEditar' animal.id %}" class="btn btn-dark active" role="button" aria-pressed="true">Editar</a>
+                <a href="{% url 'AnimalesBorrar' animal.id %}" class="btn btn-outline-success" role="button" aria-pressed="true">Eliminar</a>
+            </div>
+            
+        </div>
+
 {% endblock %}
