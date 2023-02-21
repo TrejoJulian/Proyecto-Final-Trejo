@@ -1,7 +1,11 @@
+{% extends "Mascoteros/parent.html" %}
+{% load static %}
+{% block contenidoDinamico %}
+<h1 class="card-title">Registro de Usuario</h1>
 <form action="" method="POST">{% csrf_token %}
-
     {{form.as_p}}
-
-    <button type="submit">Registrate</button>
-
+    <a href="{% url 'Home' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
+    <button type="submit" class="btn btn-dark">Registrarse</button>
 </form>
+
+{% endblock %}

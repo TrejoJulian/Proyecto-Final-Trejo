@@ -1,13 +1,44 @@
-<ul>
-    {% for establecimiento in object_list %}
-    <li>
-        {{ establecimiento.nombre }}
-        <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}" > Ver </a>
-        <a href="{% url 'EstablecimientosEditar' establecimiento.id %}" > Editar </a>
-        <a href="{% url 'EstablecimientosBorrar' establecimiento.id %}" > Borrar </a>
-    </li>
-    {% endfor %}
-    
-</ul>
+{% extends "Mascoteros/parent.html" %}
+{% load static %}
+{% block contenidoDinamico %}
+
+<h1 class="card-title">Portal de Establecimientos </h1>
+<a href="{% url 'EstablecimientosCrear' %}" class="btn btn-dark active float-right" role="button" aria-pressed="true">Nueva Entrada</a>
+<a href="#" class="btn btn-dark active float-right" role="button" aria-pressed="true">Buscar Establecimiento</a>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for establecimiento in object_list %}
+            <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}">
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top-list" src="{{establecimiento.imagen.url}}" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{establecimiento.nombre}}</h5>
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                    </div>
+                </div> 
+            </a>   
+            {% endfor %}    
+        </div>    
+        <ul>
+            {% for establecimiento in object_list %}
+            <li>
+                {{ establecimiento.nombre }}
+                <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}" > Ver </a>
+                <a href="{% url 'EstablecimientosEditar' establecimiento.id %}" > Editar </a>
+                <a href="{% url 'EstablecimientosBorrar' establecimiento.id %}" > Borrar </a>
+            </li>
+            {% endfor %}
+            
+        </ul>
+
+{% endblock %}
+
+
 
 <a href="{% url 'EstablecimientosCrear' %}" > Crear </a>

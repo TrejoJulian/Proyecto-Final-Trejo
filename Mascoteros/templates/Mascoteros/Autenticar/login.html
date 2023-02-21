@@ -1,9 +1,10 @@
-<body>
+{% extends "Mascoteros/parent.html" %}
+{% load static %}
+{% block contenidoDinamico %}
+<h1 class="card-title">Iniciar Sesión</h1>
     <form action="" method="POST">   {% csrf_token %}
-        
         {{form.as_p}}
-
-        <button type="submit">Iniciar Sesión</button>
-
+        <a href="{% url 'Home' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
+        <button type="submit" class="btn btn-dark">Iniciar Sesion</button>
     </form>
-</body>
+{% endblock %}

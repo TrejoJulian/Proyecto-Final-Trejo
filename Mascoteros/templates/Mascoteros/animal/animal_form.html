@@ -1,11 +1,17 @@
+{% extends "Mascoteros/parent.html" %}
+{% load static %}
+{% block contenidoDinamico %}
 
-
-
+<h1 class="card-title">Nuevo Animal</h1>
 <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
     <div class="d-flex justify-content-center">
         <table> 
             {{form.as_table}}
         </table>
     </div>
+    <a href="{% url 'AnimalesLista' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
+    <button type="submit" class="btn btn-dark">Crear Entrada</button>
     <input type="submit" value="Enviar">
 </form>
+
+{% endblock %}
