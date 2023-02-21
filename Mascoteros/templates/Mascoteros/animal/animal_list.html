@@ -18,7 +18,7 @@
     {% for animal in object_list %}
         <div class="col mb-5">
             <a href="{% url 'AnimalesDetalle' animal.id %}">
-                <div class="card h-100">
+                <div class="card h-100 zoom">
                     <!-- Item image-->
                     <img class="card-img-top-list" src="{{animal.imagen.url}}" alt="..." />
                     <!-- Item details-->

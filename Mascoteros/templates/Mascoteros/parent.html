@@ -28,7 +28,7 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'AnimalesLista' %}">Animales</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'EstablecimientosLista' %}">Establecimientos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'ProductosLista' %}">Productos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'About' %}">About</a></li>
                             {% if not user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link active rounded" aria-current="page"  href="{% url 'Register' %}">Registrarse</a></li>
                             <li class="nav-item"><a class="nav-link active-2 rounded" aria-current="page" href="{% url 'Login' %}">Iniciar Sesión</a></li>

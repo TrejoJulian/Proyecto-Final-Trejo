@@ -14,6 +14,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def home(request): 
     return render(request, "Mascoteros/home.html")
 
+def about(request): 
+    return render(request, "Mascoteros/about.html")
 
 
 class ListaAnimal(ListView):

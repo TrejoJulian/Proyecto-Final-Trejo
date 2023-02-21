@@ -257,6 +257,10 @@ samp {
   unicode-bidi: bidi-override;
 }
 
+.zoom:hover {
+  transform: scale(1.2);
+}
+
 pre {
   display: block;
   margin-top: 0;
@@ -299,6 +303,7 @@ figure {
 img,
 svg {
   vertical-align: middle;
+  object-fit: cover !important;
 }
 
 table {
