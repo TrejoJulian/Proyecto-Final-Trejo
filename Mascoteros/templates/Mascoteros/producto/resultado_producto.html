@@ -11,16 +11,11 @@
     <div class="col mb-5">
         <a href="{% url 'ProductosDetalle' producto.id %}">
             <div class="card h-100">
-                <!-- Product image-->
                 <img class="card-img-top-list" src="{{producto.imagen.url}}" alt="..." />
-                <!-- Product details-->
                 <div class="card-body p-4">
-                    <div class="text-center">
-                        <!-- Product name-->
                         <h5 class="fw-bolder">{{producto.nombre}}</h5>
                     </div>
                 </div>
-                <!-- Product actions-->
             </div>
         </a>
     </div>

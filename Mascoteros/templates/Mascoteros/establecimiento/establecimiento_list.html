@@ -19,13 +19,10 @@
     {% for establecimiento in object_list %}
     <div class="col mb-5">
         <a href="{% url 'EstablecimientosDetalle' establecimiento.id %}">
-            <div class="card h-100">
-                <!-- Item image-->
+            <div class="card h-100 zoom">
                 <img class="card-img-top-list" src="{{establecimiento.imagen.url}}" alt="..." />
-                <!-- Item details-->
                 <div class="card-body p-4">
                     <div class="text-center">
-                        <!-- Item name-->
                         <h5 class="fw-bolder">{{establecimiento.nombre}}</h5>
                     </div>
                 </div>

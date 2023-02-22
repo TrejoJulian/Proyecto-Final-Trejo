@@ -2,6 +2,32 @@
 {% load static %}
 {% block contenidoDinamico %}
 
-<h1 class="card-title">Sobre Nosotros</h1>
+<h1 class="card-title">About Us</h1>
+<p class="lead">Esta página web fue creada como parte del Proyecto Final del curso de Python (comisión 34660).</p>
+<div class="row gx-2 gx-lg-2 align-items-center my-2"></div>
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="col mb-5">
+        <div class="card h-100">
+            <img class="card-img-top-list" src="{% static 'Mascoteros/images/about_julian.jpeg' %}" alt="..." />
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">Julián</h5>
+                    <a href="https://www.linkedin.com/in/juliandtrejo/" class="fa fa-linkedin-square"></a>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="col mb-5">
+        <div class="card h-100">
+            <img class="card-img-top-list" src="{% static 'Mascoteros/images/about_martin.png' %}" alt="..." />
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">Martín</h5>
+                    <a href="https://www.linkedin.com/in/trejomartin/" class="fa fa-linkedin-square" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div> 
 
 {% endblock %}
