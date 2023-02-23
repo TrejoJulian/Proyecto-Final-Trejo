@@ -11333,6 +11333,11 @@ textarea.form-control-lg {
 }
 
 .fa, .fa-linkedin-square {
-  font-size: 24px;
-  color: #0E76A8;
+  font-size: 24px !important;
+  color: #0E76A8 !important;
+}
+
+.card-title-header {
+  margin-bottom: 0.5rem !important;
+  color: #7E57C2 !important;
 }
