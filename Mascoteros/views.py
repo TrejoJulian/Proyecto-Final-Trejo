@@ -129,12 +129,12 @@ def resultado_productos(request):
 
     return render(request, "Mascoteros/producto/resultado_producto.html", {"nombre":producto_buscado, "productos": resultados_productos})
 
-#Vista para registrarse
+
 def register(request):
 
-    if request.method == 'POST':    #cuando le haga click al botón
+    if request.method == 'POST':   
 
-        form = RegistroFormulario(request.POST)   #leer los datos   llenados en el formulario
+        form = RegistroFormulario(request.POST)  
 
         if form.is_valid():
 
@@ -145,42 +145,38 @@ def register(request):
     
     else:
 
-        form = RegistroFormulario()   #formulario de django que nos permite crear usuarios.
+        form = RegistroFormulario()  
     
     
     return render(request, "Mascoteros/Autenticar/registro.html", {'form':form})
 
 
 
-#Vista para iniciar sesión
 def login_request(request):
 
-    if request.method == 'POST': #al presionar el botón "Iniciar Sesión"
+    if request.method == 'POST':
 
-        form = AuthenticationForm(request, data = request.POST) #leer la data del formulario de inicio de sesión
+        form = AuthenticationForm(request, data = request.POST)
 
         if form.is_valid():
             
-            usuario=form.cleaned_data.get('username')   #leer el usuario ingresado
-            contra=form.cleaned_data.get('password')    #leer la contraseña ingresada
+            usuario=form.cleaned_data.get('username')  
+            contra=form.cleaned_data.get('password')  
 
-            user=authenticate(username=usuario, password=contra)    #buscar al usuario con los datos ingresados
+            user=authenticate(username=usuario, password=contra) 
 
-            if user:    #si ha encontrado un usuario con eso datos
+            if user:
 
-                login(request, user)   #hacemos login
+                login(request, user)
 
-                #mostramos la página de inicio con un mensaje de bienvenida.
-                return render(request, "Mascoteros/home.html", {'mensaje':f"Bienvenido {user}"}) 
+                return render(request, "Mascoteros/home.html") 
 
-        else:   #si el formulario no es valido (no encuentra usuario)
-
-            #mostramos la página de inicio junto a un mensaje de error.
+        else:
     
-            return render(request, "Mascoteros/home.html", {'mensaje':"Error. Datos incorrectos"})
+            return render(request, "Mascoteros/Autenticar/login.html", {'form':form, 'mensaje':"Error. Datos incorrectos"})
 
     else:
             
-        form = AuthenticationForm() #mostrar el formulario
+        form = AuthenticationForm()
 
-    return render(request, "Mascoteros/Autenticar/login.html", {'form':form})    #vincular la vista con la plantilla de html
+    return render(request, "Mascoteros/Autenticar/login.html", {'form':form})   

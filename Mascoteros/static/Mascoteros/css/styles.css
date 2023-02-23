@@ -261,6 +261,10 @@ samp {
   transform: scale(1.2);
 }
 
+.zoom-home:hover {
+  transform: scale(1.1);
+}
+
 pre {
   display: block;
   margin-top: 0;

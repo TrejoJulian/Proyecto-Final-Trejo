@@ -2,9 +2,14 @@
 {% load static %}
 {% block contenidoDinamico %}
 <h1 class="card-title">Iniciar Sesión</h1>
-    <form action="" method="POST">   {% csrf_token %}
-        {{form.as_p}}
-        <a href="{% url 'Home' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
-        <button type="submit" class="btn btn-dark">Iniciar Sesion</button>
-    </form>
+<form class ="col-md-4" action="" method="POST">   {% csrf_token %}
+    <div class="d-flex">
+        <table> 
+            {{form.as_table}}
+        </table>
+    </div>
+    <a href="{% url 'Home' %}" class="btn btn btn-light" role="button" aria-pressed="true">Cancelar</a>
+    <button type="submit" class="btn btn-dark">Iniciar Sesion</button>
+</form>
+
 {% endblock %}
