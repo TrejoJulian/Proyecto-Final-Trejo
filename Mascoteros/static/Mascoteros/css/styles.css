@@ -3247,12 +3247,18 @@ textarea.form-control-lg {
   border-color: #f8f9fa;
 }
 
-.btn-dark, .btn-dark:hover, .btn-dark:active, .btn-dark:visited {
+.btn-dark, .btn-dark:active, .btn-dark:visited {
   background-color: #7E57C2 !important;
   border-color: #7E57C2 !important;
   margin-top:10px !important;
   margin-bottom: 10px !important;
   color: white;
+}
+
+.btn-dark:hover {
+  color: #7E57C2 !important;
+  border-color: #7E57C2 !important;
+  background-color: #fff !important;
 }
 
 .btn-check:focus + .btn-dark, .btn-dark:focus {

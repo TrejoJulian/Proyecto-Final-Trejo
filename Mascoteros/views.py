@@ -105,6 +105,7 @@ class BorrarProducto(LoginRequiredMixin, DeleteView):
 
     model = Producto
     success_url = "/Mascoteros/producto/list"
+    template_name = "Mascoteros/producto/producto_confirm_delete.html"
 
 
 def resultado_animales(request):
