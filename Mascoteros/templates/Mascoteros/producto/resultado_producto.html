@@ -6,20 +6,21 @@
 <div class="row gx-2 gx-lg-2 align-items-center my-2"></div>
 
 {% if productos %}
-<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
-    {% for producto in productos %}
-    <div class="col mb-5">
-        <a href="{% url 'ProductosDetalle' producto.id %}">
-            <div class="card h-100">
-                <img class="card-img-top-list" src="{{producto.imagen.url}}" alt="..." />
-                <div class="card-body p-4">
-                        <h5 class="fw-bolder">{{producto.nombre}}</h5>
+<div class="card-deck"></div>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
+        {% for producto in productos %}
+        <div class="col mb-5">
+            <a href="{% url 'ProductosDetalle' producto.id %}">
+                <div class="card h-100">
+                    <img class="card-img-top-list" src="{{producto.imagen.url}}" alt="..." />
+                    <div class="card-body p-4">
+                            <h5 class="fw-bolder">{{producto.nombre}}</h5>
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
-    {% endfor %}    
+            </a>
+        </div>
+        {% endfor %} 
+    </div>   
 </div>    
 
 {% else %}
